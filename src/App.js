@@ -9,24 +9,12 @@ function Tile(props)  {
     const blackRadius=(props.currentPlayer==='b') ? prevRadius:0;
     const whiteRadius=(props.currentPlayer==='w') ? prevRadius:0;
     return (
-      //define a on mouse enter event and an on mouse leave event
-      //on mouse enter call a function that modified a value so that 
-      //the value holds an svg of the players stone
-      //on mouse exit call a function that modified the value so that it
-      //holds nothing
       <button className="tile" onClick={props.onClick} onMouseEnter={props.onMouseEnter} onMouseLeave={props.mouseExit}>
         <svg width={tileSize} height={tileSize}>
           <circle  r={radius} cx={tileSize/2} cy={tileSize/2} stroke="black" strokeWidth="3" fill={props.stoneFill} />
-          
-          <circle className="black-circ" r={blackRadius} cx={tileSize/2} cy={tileSize/2} stroke="black" strokeWidth="3" />
-          <circle className="white-circ" r={whiteRadius} cx={tileSize/2} cy={tileSize/2} stroke="black" strokeWidth="3" />
-          
-        
+          {props.isGameOver ? null:<circle className="black-circ" r={blackRadius} cx={tileSize/2} cy={tileSize/2} stroke="black" strokeWidth="3" />}
+          {props.isGameOver ? null:<circle className="white-circ" r={whiteRadius} cx={tileSize/2} cy={tileSize/2} stroke="black" strokeWidth="3" />}
         </svg>
-        
-
-        
-
       </button>
       );
       
@@ -65,6 +53,7 @@ class Board extends React.Component {
       stoneRadius={this.props.board[row][col]!=='n' ? 14:0}
       stoneFill={this.props.board[row][col]==='b' ? 'black':'white'}
       currentPlayer={this.props.currentPlayer}
+      isGameOver={this.props.isGameOver}
       />
     );
   }
@@ -90,7 +79,6 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.boardSize=9;
-
     let Board=new Array(this.boardSize);
     for(let row=0;row<this.boardSize;row++) {
       Board[row]=new Array(this.boardSize);
@@ -101,6 +89,7 @@ class Game extends React.Component {
       }
     }
     this.state={
+      isGameOver:false,
       player1Captures:0,
       player2Captures:0,
       currentPlayer:'b',
@@ -112,6 +101,7 @@ class Game extends React.Component {
       player2Name:'Player 2',
       player1Color:'b',
       player2Color:'w',
+      didPrevPlayerPass:false,
     };
 
     this.handlePass=this.handlePass.bind(this);
@@ -133,7 +123,6 @@ class Game extends React.Component {
   //returns the number of liberties that a stone or group of connected stones has
   //expects the row and col of the stone or a row col in the group as input
   captureHelper(board,row,col,checkedNeighbors) {
-    console.log(typeof(checkedNeighbors));
     const playerColor=board[row][col]
     const directions=[[-1,0],[1,0],[0,1],[0,-1]];
     let numOfLiberties=0;
@@ -294,32 +283,47 @@ class Game extends React.Component {
       playerTurnStatus:newPlayerTurnStatus,
       errorMessage:newErrorMessage,
       player1Captures:newPlayer1Captures,
-      player2Captures:newPlayer2Captures
+      player2Captures:newPlayer2Captures,
+      didPrevPlayerPass:false,
     });
     
   }
 
 
   handleClick(i,j) {
-    this.makeMove(i,j);
+    if(this.state.isGameOver===false) {
+      this.makeMove(i,j);
+    }
   }
 
-  
+  //Change player to next player 
+  //If the next player passes then game scoring begins
   handlePass() {
     const nextPlayer=(this.state.currentPlayer==='b') ? 'w':'b';
     const newPlayerTurnStatus=(nextPlayer==='b') ? "Black's Turn!":"White's Turn!";
-    this.setState({
-      currentPlayer:nextPlayer,
-      playerTurnStatus:newPlayerTurnStatus,
-    });
 
-    //Change player to next player 
+    //If the other player did not pass on their previous turn
+    if(this.state.didPrevPlayerPass===false) {
+      this.setState({
+        currentPlayer:nextPlayer,
+        playerTurnStatus:newPlayerTurnStatus,
+        didPrevPlayerPass:true,
+      });
+    }
+    //If the other player passed on their previous turn
+    else {
+      this.setState({
+        isGameOver:true
+      })
 
-    //If the next player passes then game scoring begins
-
+    }
   }
 
   handleResign() {
+    //Do nothing if the game is over
+    if(this.state.isGameOver) {
+      return;
+    }
     let newErrorMessage="";
     if (this.state.currentPlayer==='b') {
       newErrorMessage="White wins by resignation!"
@@ -329,6 +333,7 @@ class Game extends React.Component {
     }
     this.setState({
       errorMessage:newErrorMessage,
+      isGameOver:true,
     });
 
   }
@@ -402,6 +407,7 @@ class Game extends React.Component {
           boardSize={this.state.boardSize}
           onClick={(i,j)=>this.handleClick(i,j)}
           currentPlayer={this.state.currentPlayer}
+          isGameOver={this.state.isGameOver}
           >
           </Board>
         </div>

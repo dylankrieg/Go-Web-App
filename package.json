@@ -2,6 +2,7 @@
   "name": "go-game-frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage":"https://dylankrieg.github.io/{Go-Web-App}",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.1.2",
@@ -36,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^3.1.0",
     "nodemon": "^2.0.6"
   }
 }
