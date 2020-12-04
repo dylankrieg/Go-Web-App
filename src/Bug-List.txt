@@ -1,3 +1,0 @@
-
-1. The graphic is not updated when a player tries to place a stone in a position that has been cleared via capture even though the move is considered valid
-2. This is because the program thinks that a black player is captued when places in a surrounding block of 5 black players and is removed from the board

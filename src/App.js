@@ -315,7 +315,6 @@ class Game extends React.Component {
       this.setState({
         isGameOver:true
       })
-
     }
   }
 
@@ -335,7 +334,6 @@ class Game extends React.Component {
       errorMessage:newErrorMessage,
       isGameOver:true,
     });
-
   }
 
   renderGameInfo() {
@@ -370,7 +368,6 @@ class Game extends React.Component {
       </div>
 
     );
-
   }
 
   renderCoord(i) {
@@ -393,7 +390,6 @@ class Game extends React.Component {
         {outCoords}
       </div>
     );
-
   }
 
   render() {
