@@ -384,7 +384,6 @@ class Game extends React.Component {
     for(let i=0;i<boardSize;i++) {
       outCoords.push(this.renderCoord(i));
     }
-    console.log(outCoords.length)
     return (
       <div className="vertical-coords-container">
         {outCoords}
