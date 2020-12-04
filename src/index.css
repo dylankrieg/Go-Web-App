@@ -42,7 +42,6 @@ ol, ul {
   fill:transparent;
   float: none;
   */
-  font-size: 24px;
   font-weight: bold;
   line-height: 34px;
   padding: 0;
@@ -89,7 +88,6 @@ ol, ul {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center; /*how items are laid out along cross-axis*/
-  flex-grow: 1;
   flex-wrap: nowrap;
 
 }
@@ -98,8 +96,6 @@ ol, ul {
 .game-board {
   width:90vmin;
   height:90vmin;
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/53/Blank_Go_board_9x9.svg");
-  background-size:contain;
   margin:auto;
   flex-basis: auto;
 
@@ -109,34 +105,59 @@ ol, ul {
   display:flex;
   flex-direction: row;
   height:90vmin;
-  width:20vw;
-  margin-right: 10px;
+  width:max(20vw,160px);
+  margin-right: 15px;
   /*flex-basis: auto;*/
   flex-wrap: wrap;
   align-content: flex-start;
-  
+  white-space: nowrap;
 }
 
 .player1-info {
-  width:10vw;
-  height:10vh;
+  width:max(10vw,80px);
+  /*height:10vh;*/
+  flex-basis: content;
   text-align: center;
   background-color: #bbf3ff;
+  font-size: 15px;
+  outline: #000000;
+  outline-width: 1px;
+  outline-style: solid;
+  font-size: 12px;
+  
 }
 
 .player2-info {
-  width:10vw;
-  height:10vh;
+  flex-basis: content;
+  width:max(10vw,80px);
   text-align: center;
   background-color: #bbf3ff;
+  font-size: 12px;
+  outline: #000000;
+  outline-width: 1px;
+  outline-style: solid;
+
+}
+
+.turn-info {
+  margin:0;
+  width:max(20vw,160px);
+  flex-basis: content;
+  text-align: center;
+  background-color: white;
+  outline: #000000;
+  outline-width: 1px;
+  outline-style: solid;
+  font-size:13px;
 }
 
 .pass-resign-container {
   display:flex;
-  width:20vw;
+  width:max(20vw,160px);
   height:30px;
   justify-content: space-between;
 }
+
 
 .pass-button {
   width:70px;
@@ -151,14 +172,7 @@ ol, ul {
 
 }
 
-.turn-info {
-  margin:0;
-  width:20vw;
-  height:5vh;
 
-  text-align: center;
-  background-color: white;
-}
 
 
 .vertical-coords-container {
