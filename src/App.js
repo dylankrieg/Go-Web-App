@@ -395,7 +395,7 @@ class Game extends React.Component {
 
     return (
       <div className="game">
-        {this.renderCoords()}
+        {/* {this.renderCoords()} */}
         <div className="game-board">
           <Board
           board={this.state.board}
