@@ -1,6 +1,6 @@
 # Go-Web-App
 
-## To play, go here: [http://go.dylankriegman.com](http://go.dylankriegman.com)
+## To play go to: [http://go.dylankriegman.com](http://go.dylankriegman.com)
 
 ## Available Scripts
 
