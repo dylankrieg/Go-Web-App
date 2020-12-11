@@ -2,10 +2,6 @@
 
 ## To play head to: [http://go.dylankriegman.com](http://go.dylankriegman.com)
 
-
-
-## Create React App Notes
-
 ## Available Scripts
 
 In the project directory, you can run:
