@@ -1,6 +1,6 @@
 # Go-Web-App
 
-Head to [http://go.dylankriegman.com](http://go.dylankriegman.com) to play in the browser
+# Head to [http://go.dylankriegman.com](http://go.dylankriegman.com) to play in the browser
 
 ## Available Scripts
 
