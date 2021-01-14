@@ -1,7 +1,7 @@
 # Go-Web-App
 
 ## To play head to: [http://go.dylankriegman.com](http://go.dylankriegman.com)
-## Don't know how to play?: [Rules Overview](https://www.kiseido.com/ff.htm)
+## Don't know how to play: [The Rules of Go](https://www.kiseido.com/ff.htm)
 
 ## Multi-player functionality in development
 
