@@ -1,12 +1,8 @@
 # Go-Web-App
-Full-stack for web-app for multiplayer go
-Client-side code in 'client' and Server-side code in 'server'
-Each side has it's own README with more details
 
 ## To play head to: [http://go.dylankriegman.com](http://go.dylankriegman.com)
 
-
-## Instructions for Running Frontend Code
+## Instructions for Running Frontend Code ('./client')
 
 ## Available Scripts
 
@@ -72,6 +68,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-## Instructions for Running Backend Code
+## Instructions for Running Backend Code ('./server')
 
 ### `node server.js`
