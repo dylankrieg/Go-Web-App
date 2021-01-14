@@ -1,6 +1,6 @@
 # Multiplayer Go Game built with React and Node.js 
 * Users can play their friends anonymously via a link
-* UI size renders dynamically to fit window
+* UI size renders dynamically to fit windows
 
 Tech stack: React, Node.js, Socket.io
 
