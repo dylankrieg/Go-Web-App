@@ -1,4 +1,4 @@
-## Multiplayer Go Game built with React and Node.js 
+## Multiplayer Go Server built with React and Node.js 
 * Users can play their friends anonymously via a link
 * UI size and layout adjusts dynamically with window size
 
