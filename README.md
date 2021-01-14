@@ -8,7 +8,9 @@
 
 
 
-## Instructions for Running Frontend Code ('./client')
+## Instructions for Running Frontend Code (./client)
+
+Navigate to './server'
 
 ## Available Scripts
 
@@ -74,6 +76,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-## Instructions for Running Backend Code ('./server')
+## Instructions for Running Backend Code (./server)
+
+Navigate to './server'
 
 ### `node server.js`
