@@ -1,5 +1,19 @@
 import React from 'react';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
+
+import CreateNewGame from './onboard/onboard';
+import WaitingRoom from './onboard/WaitingRoom';
+
+import SOCKET, {Socket,mySocketId,listenForNewPlayer } from './onboard/socket'
+
+//import SOCKET, {Socket,mySocketId,newUserEntered,listenForScreenChange } from './onboard/socket'
+
+
 function Tile(props)  {
     const {width,height}=useWindowSize();
     const minDim=width<height ? width:height;
@@ -19,7 +33,6 @@ function Tile(props)  {
       );
       
 }
-
 
 //store in utils/useWindowSize
 //import useWindowSize from "../utils/useWindowSize"
@@ -42,7 +55,6 @@ function useWindowSize() {
   },[]);
   return windowSize;
 }
-
 
 
 class Board extends React.Component {
@@ -79,6 +91,7 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.boardSize=9;
+    this.state.playerName=props.playerName;
     let Board=new Array(this.boardSize);
     for(let row=0;row<this.boardSize;row++) {
       Board[row]=new Array(this.boardSize);
@@ -88,6 +101,9 @@ class Game extends React.Component {
         Board[row][col]='n';
       }
     }
+
+
+
     this.state={
       isGameOver:false,
       player1Captures:0,
@@ -102,6 +118,7 @@ class Game extends React.Component {
       player1Color:'b',
       player2Color:'w',
       didPrevPlayerPass:false,
+      messages:'no messages',
     };
 
     this.handlePass=this.handlePass.bind(this);
@@ -290,6 +307,7 @@ class Game extends React.Component {
   }
 
 
+
   handleClick(i,j) {
     if(this.state.isGameOver===false) {
       this.makeMove(i,j);
@@ -407,23 +425,69 @@ class Game extends React.Component {
           </Board>
         </div>
         {this.renderGameInfo()}
+        <p className="message-info">
+          These are game messages: {this.state.messages}
+        </p>
       </div>
+
     );
     
   }
 }
 
 
+
+
 function App() {
+  const [newPlayerEntered,setNewPlayerEntered]=React.useState(false);
+    /* Sets up socket listener and passes in callback
+    for when a new player joins */
+  listenForNewPlayer(() => {
+    setNewPlayerEntered(true);
+  });
+  
+  let isCreator=false;
+
   return (
-    <div className="App">
-      <div className="Game">
-        <Game />
-      </div>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <CreateNewGame
+            isCreator={true}
+          >
+          </CreateNewGame>
+
+        </Route>
+        <Route path="/game/:gameid" exact>
+          { (isCreator & !newPlayerEntered) &&
+            <WaitingRoom>
+            </WaitingRoom>
+          }
+          { (isCreator & newPlayerEntered) &&
+            <Game>
+            </Game>
+          }
+          { !isCreator &&
+            <React.Fragment>
+              <CreateNewGame
+                isCreator={false}
+              >
+              </CreateNewGame>
+              <Game>
+              </Game>
+
+
+            </React.Fragment>
+            
+          }
+
+
+
+        </Route>
+      </Switch>
+    </Router>
   );
 }
-
 
 
 export default App;
