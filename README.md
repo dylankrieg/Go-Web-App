@@ -4,7 +4,7 @@
 
 ## Multi-player functionality in development
 
-## Don't know how to play?: [How to Play Go](https://www.kiseido.com/ff.htm)
+## Don't know how to play? Head here -> [How to Play Go](https://www.kiseido.com/ff.htm)
 
 
 ## Instructions for Running Frontend Code - client
