@@ -1,6 +1,6 @@
 # Go-Web-App
 
-## To play head to: [http://go.dylankriegman.com](http://go.dylankriegman.com)
+## Do you want to play a demo? Head here ->[http://go.dylankriegman.com](http://go.dylankriegman.com)
 
 ## Multi-player functionality in development
 
