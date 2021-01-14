@@ -1,6 +1,8 @@
 # Go-Web-App
 
 ## To play head to: [http://go.dylankriegman.com](http://go.dylankriegman.com)
+## Don't know how to play?: [https://www.kiseido.com/ff.htm](Overview of Rules)
+
 ## Multi-player functionality in development
 
 ## Instructions for Running Frontend Code ('./client')
