@@ -1,7 +1,7 @@
 # Go-Web-App
 
-## To play head to: [http://go.dylankriegman.com](http://go.dylankriegman.com) for simple demo
-## Multi-player functionality in the works
+## To play head to: [http://go.dylankriegman.com](http://go.dylankriegman.com)
+## Multi-player functionality in development
 
 ## Instructions for Running Frontend Code ('./client')
 
