@@ -2,7 +2,7 @@
 * Users can play their friends anonymously via a link
 * UI size and layout adjusts dynamically with window size
 
-Tech stack: React, Node.js, Socket.io
+Tech stack: React, Node.js, Socket.io, HTML, CSS
 
 ### Do you want to play a demo? Head here -> [http://go.dylankriegman.com](http://go.dylankriegman.com)
 Please note, multi-player functionality in still development. This code is not fully updated
